@@ -10,13 +10,11 @@ import Conexion.Conexion;
 
 public class Servidor extends Conexion //Se hereda de conexi�n para hacer uso de los sockets y dem�s
 {
-	private Socket servidor1, servidor2; // Sockets para los dos servidores adicionales
-	
-	
     public Servidor() throws IOException{
-    	super("servidor","10.43.101.86");
+    	super("servidor-master","10.43.101.86");
     }
-   
+    
+    // hello commit
 
     public void startServer()//M�todo para iniciar el servidor
     {
@@ -43,9 +41,9 @@ public class Servidor extends Conexion //Se hereda de conexi�n para hacer uso 
                 System.out.println(mensajeServidor);
                 //Mandar petici�n a los servidores beb�
                 if (mensajeServidor.equals("accion1")) {
-                    enviarMensaje(servidor1, "Mensaje para servidor 1");
+                    enviarMensaje(ServerServer2, "Mensaje para servidor 1");
                 } else if (mensajeServidor.equals("accion2")) {
-                    enviarMensaje(servidor2, "Mensaje para servidor 2");
+                    enviarMensaje(ServerServer3, "Mensaje para servidor 2");
                 } else {
                     System.out.println("Mensaje no reconocido");
                 }
