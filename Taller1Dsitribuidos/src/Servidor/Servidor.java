@@ -14,9 +14,7 @@ public class Servidor extends Conexion //Se hereda de conexi�n para hacer uso 
 	
 	
     public Servidor() throws IOException{
-    	super("servidor","192.168.56.1");
-    	servidor1 = new Socket("192.168.1.100", 1234); // Direcci�n y puerto del servidor 1
-    	servidor2 = new Socket("192.168.1.101", 1234); // Direcci�n y puerto del servidor 2 //Se usa el constructor para servidor de Conexion
+    	super("servidor","10.43.101.86");
     }
    
 
