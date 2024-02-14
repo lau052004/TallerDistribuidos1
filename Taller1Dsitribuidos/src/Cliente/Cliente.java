@@ -11,7 +11,7 @@ import Conexion.Conexion;
 public class Cliente extends Conexion {
 
 	public Cliente() throws IOException {
-		super("cliente", "192.168.1.114");
+		super("cliente", "10.43.101.24");
 	}
 	
 	public void startClient() //M�todo para iniciar el cliente
