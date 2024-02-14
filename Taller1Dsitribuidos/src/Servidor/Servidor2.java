@@ -11,7 +11,7 @@ import Conexion.Conexion;
 public class Servidor2 extends Conexion {
 
 	    public Servidor2() throws IOException{
-	    	super("servidor2","10.43.100.67");
+	    	super("servidor2","localhost");
 	    }
 
 		public void startServer() {

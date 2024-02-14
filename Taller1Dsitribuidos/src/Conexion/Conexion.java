@@ -19,11 +19,11 @@ public class Conexion {
     {
         this.host = host;
         if (tipo.equalsIgnoreCase("servidor2")){
-            ss = new ServerSocket(PUERTO2);// Se crea el socket para el servidor en puerto 1234
+            ss = new ServerSocket(PUERTO2);
             cs = new Socket(); // Socket para el cliente 
         }
         else if (tipo.equalsIgnoreCase("servidor3")){
-            ss = new ServerSocket(PUERTO3);// Se crea el socket para el servidor en puerto 1234
+            ss = new ServerSocket(PUERTO3);
             cs = new Socket(); // Socket para el cliente 
         }
         else if (tipo.equalsIgnoreCase("servidor-master")){

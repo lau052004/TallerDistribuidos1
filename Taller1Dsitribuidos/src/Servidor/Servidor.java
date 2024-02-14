@@ -13,7 +13,7 @@ import Conexion.Conexion;
 public class Servidor extends Conexion //Se hereda de conexi�n para hacer uso de los sockets y dem�s
 {
     public Servidor() throws IOException{
-    	super("servidor-master","10.43.101.86");
+    	super("servidor-master","localhost");
     }
     
     // hello commit

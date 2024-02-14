@@ -11,7 +11,7 @@ import Conexion.Conexion;
 public class Cliente extends Conexion {
 
 	public Cliente() throws IOException {
-		super("cliente", "10.43.101.24");
+		super("cliente", "localhost");
 	}
 	
 	public void startClient() //M�todo para iniciar el cliente
@@ -22,7 +22,7 @@ public class Cliente extends Conexion {
             salidaServidor = new DataOutputStream(cs.getOutputStream());
             BufferedReader entradaServidor = new BufferedReader(new InputStreamReader(cs.getInputStream()));
         
-            
+            System.out.println("This is the req");
             System.out.println(entradaServidor.readLine());
             
             
