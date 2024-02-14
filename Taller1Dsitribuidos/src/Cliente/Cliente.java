@@ -1,7 +1,10 @@
 package Cliente;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 import Conexion.Conexion;
 
@@ -11,27 +14,61 @@ public class Cliente extends Conexion {
 		super("cliente", "192.168.1.114");
 	}
 	
-	public void startClient() //Método para iniciar el cliente
+	public void startClient() //Mï¿½todo para iniciar el cliente
     {
         try
         {
             //Flujo de datos hacia el servidor
             salidaServidor = new DataOutputStream(cs.getOutputStream());
-
-            //Se enviarán dos mensajes
-            for (int i = 0; i < 2; i++)
-            {
-                //Se escribe en el servidor usando su flujo de datos
-                salidaServidor.writeUTF("Este es el mensaje número " + (i+1) + "\n");
-            }
-
-            cs.close();//Fin de la conexión
-
+            BufferedReader entradaServidor = new BufferedReader(new InputStreamReader(cs.getInputStream()));
+        
+            
+            System.out.println(entradaServidor.readLine());
+            
+            
+            cs.close();//Fin de la conexiï¿½n
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
-        //Hola
     }
+	
+	public void ingresarOperacion() {
+		Scanner sc = new Scanner(System.in);
+    	int op,num1,num2;
+    	String opcion1 = "Suma",opcion2 = "Resta", info;
+    	
+	    	
+		System.out.println("Ingrese el nÃºmero de la operaciÃ³n que desea realizar: ");
+        System.out.println("1. " + opcion1);
+        System.out.println("2. " + opcion2);
+        op = sc.nextInt();
+        
+        switch(op) {
+        case 1:
+        	// Le envÃ­a al servidor la peticion de una suma 
+        	try {
+        		System.out.println("Ingresa el primer nÃºmero: ");
+        		num1 = sc.nextInt();
+        		System.out.println("Ingresa el segundo nÃºmero: ");
+        		num2 = sc.nextInt();
+        		info = opcion1 + ";" + num1 + ";" + num2;
+        		salidaServidor.writeUTF(info);
+        	} catch (Exception e) {
+        		System.out.println(e.getMessage());
+        	}
+        case 2:
+        	try {
+        		System.out.println("Ingresa el primer nÃºmero: ");
+        		num1 = sc.nextInt();
+        		System.out.println("Ingresa el segundo nÃºmero: ");
+        		num2 = sc.nextInt();
+        		info = opcion2 + ";" + num1 + ";" + num2;
+        		salidaServidor.writeUTF(info);        	
+        	} catch(Exception e) {
+        		System.out.println(e.getMessage());
+        	}
+        }
+	}
 }

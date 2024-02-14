@@ -1,7 +1,9 @@
 package Servidor;
 
 import java.io.BufferedReader;
+
 import java.io.DataOutputStream;
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
@@ -25,6 +27,9 @@ public class Servidor extends Conexion //Se hereda de conexi�n para hacer uso 
             cs = ss.accept(); //Accept comienza el socket y espera una conexi�n desde un cliente
 
             System.out.println("Cliente en l�nea");
+            
+            DataInputStream response= new DataInputStream(this.cs.getInputStream());
+            System.out.println(response);
 
             //Se obtiene el flujo de salida del cliente para enviarle mensajes
             salidaCliente = new DataOutputStream(cs.getOutputStream());
@@ -37,6 +42,8 @@ public class Servidor extends Conexion //Se hereda de conexi�n para hacer uso 
 
             while((mensajeServidor = entrada.readLine()) != null) //Mientras haya mensajes desde el cliente
             {
+            	// Dividir el String por ";"
+
                 //Se muestra por pantalla el mensaje recibido
                 System.out.println(mensajeServidor);
                 //Mandar petici�n a los servidores beb�
